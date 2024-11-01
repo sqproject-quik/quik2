@@ -1,21 +1,17 @@
 (()=>{
   window.version_code = '${VERSION_CODE}';
   window.version={
-    version:'2.5.4',
+    version:'2.5.6',
     version_code:window.version_code,
-    updateTime:'2024/10/19',
+    updateTime:'2024/11/1',
     log:[
       {
         tag:"fix",
-        content:"限制搜索联想的高度，避免溢出屏幕"
+        content:"修复链接图标显示问题"
       },
       {
-        tag:"change",
-        content:"将图标源改回GoogleFontsAPI"
-      },
-      {
-        tag:"new",
-        content:"添加“强制更新”功能，以应急"
+        tag:"fix",
+        content:"优化链接图标显示逻辑"
       }
     ]
   }

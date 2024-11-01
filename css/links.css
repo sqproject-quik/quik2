@@ -166,28 +166,37 @@ body.dark .links .linkscroll:-webkit-scrollbar-thumb:hover{
   width: 35px;
   height: 35px;
   padding:10px 10px;
-  margin: 5px 7px;
   border-radius: 10px;
-  background-color: rgba(230, 230, 230, 0.6);
-  box-shadow: none;
   transition: all .2s;
 }
-.links.round ul.link-list li a img{
+.links ul.link-list li .link-icon{
+  background-color: rgba(230, 230, 230, 0.6);
+  border-radius: 10px;
+  box-shadow: none;
+  transition: all .2s;
+  margin: 5px 7px;
+  width: 55px;
+  height: 55px;
+}
+.links.round ul.link-list li a img,
+.links.round ul.link-list li .link-icon{
   border-radius: 50%!important;
 }
-.links.square ul.link-list li a img{
+.links.square ul.link-list li a img,
+.links.square ul.link-list li .link-icon{
   border-radius: 0!important;
 }
 .links ul.link-list li a p{
   font-size: 12px;
   text-align: center;
 }
-.links ul.link-list li a:hover img,
-.links ul.link-list li.menued a img
+.links ul.link-list li a:hover .link-icon,
+.links ul.link-list li.menued .link-icon
 {
   background-color: rgb(210, 210, 210,.6);
   box-shadow: 0 0 5px rgba(0,0,0,.1);
 }
+
 .links ul.link-list.xs li{
   width:49px;
   height:70px;
@@ -196,7 +205,12 @@ body.dark .links .linkscroll:-webkit-scrollbar-thumb:hover{
   width: 24px;
   height: 24px;
   padding:6px 6px;
+  border-radius: 3px;
+}
+.links ul.link-list.xs li .link-icon{
   margin: 4px 4px;
+  width: 36px;
+  height: 36px;
   border-radius: 3px;
 }
 .links ul.link-list.s li{
@@ -208,7 +222,12 @@ body.dark .links .linkscroll:-webkit-scrollbar-thumb:hover{
   width: 30px;
   height: 30px;
   padding:10px 10px;
+  border-radius: 6px;
+}
+.links ul.link-list.s li .link-icon{
   margin: 5px 5px;
+  width: 50px;
+  height: 50px;
   border-radius: 6px;
 }
 @media(max-width:400px){
@@ -216,7 +235,7 @@ body.dark .links .linkscroll:-webkit-scrollbar-thumb:hover{
     width:57px;
     height:90px;
   }
-  .links ul.link-list.s li a img{
+  .links ul.link-list.s li .link-icon{
     margin: 5px 4px;
   }
 }
@@ -228,7 +247,12 @@ body.dark .links .linkscroll:-webkit-scrollbar-thumb:hover{
   width: 40px;
   height: 40px;
   padding:10px 10px;
+  border-radius: 12px;
+}
+.links ul.link-list.l li .link-icon{
   margin: 10px 9px;
+  width: 60px;
+  height: 60px;
   border-radius: 12px;
 }
 .links ul.link-list.l li a p{
@@ -242,8 +266,20 @@ body.dark .links .linkscroll:-webkit-scrollbar-thumb:hover{
   width: 40px;
   height: 40px;
   padding:20px 20px;
-  margin: 10px 9px;
   border-radius: 15px;
+}
+.links ul.link-list.xl li .link-icon{
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+  margin: 10px 9px;
+
+}
+.links ul.link-list li a img{
+  opacity: 0;
+}
+.links ul.link-list li a img.load{
+  opacity: 1;
 }
 .links ul.link-list.xl li a p{
   font-size: 15px;

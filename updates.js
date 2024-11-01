@@ -1,4 +1,17 @@
 var updatelog={
+  "2.5.6":{
+    updates:[
+      {
+        tag:"fix",
+        content:"修复链接图标显示问题"
+      },
+      {
+        tag:"fix",
+        content:"优化链接图标显示逻辑"
+      }
+    ],
+    time:"2024/11/1"
+  },
   "2.5.5":{
     updates:[
       {

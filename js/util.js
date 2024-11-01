@@ -175,7 +175,7 @@
         cb(false);
         return;
       }
-        var _ic='https://api.iowen.cn/favicon/'+u.host+'.png';
+        var _ic='https://api.xinac.net/icon/?url='+u.origin;
         if(u.hostname.indexOf('bing.com')!=-1){
           _ic='https://bing.com/favicon.ico';
         }else if(u.hostname.indexOf('www.google.com')!=-1||u.hostname.indexOf('google.com')==0){

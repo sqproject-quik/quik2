@@ -104,13 +104,16 @@
 
     function glinkli(l) {
         var li = util.element('li');
-        li.innerHTML = `<a href="${l.url}" target="_blank" rel="noopener noreferer"><img/><p></p></a>`
+        li.innerHTML = `<a href="${l.url}" target="_blank" rel="noopener noreferer"><div class="link-icon"><img/></div><p></p></a>`
         util.query(li, 'p').innerText = l.title;
         util.getFavicon(l.url, favicon => {
             if (favicon) {
                 util.query(li, 'img').src = favicon;
             } else {
                 util.query(li, 'img').src = util.createIcon(l.title[0]);
+            }
+            util.query(li, 'img').onload=function(){
+                this.classList.add('load');
             }
         });
         li.oncontextmenu = function (e) {
