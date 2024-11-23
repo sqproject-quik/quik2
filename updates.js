@@ -1,4 +1,17 @@
 var updatelog={
+  "2.5.6.1":{
+    updates:[
+      {
+        tag:"fix",
+        content:"修复翻译API接口"
+      },
+      {
+        tag:"fix",
+        content:"内核问题修复"
+      }
+    ],
+    time:"2024/11/23"
+  },
   "2.5.6":{
     updates:[
       {

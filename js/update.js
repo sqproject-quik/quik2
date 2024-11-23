@@ -1,17 +1,17 @@
 (()=>{
   window.version_code = '${VERSION_CODE}';
   window.version={
-    version:'2.5.6',
+    version:'2.5.6.1',
     version_code:window.version_code,
-    updateTime:'2024/11/1',
+    updateTime:'2024/11/23',
     log:[
       {
         tag:"fix",
-        content:"修复链接图标显示问题"
+        content:"修复翻译API接口"
       },
       {
         tag:"fix",
-        content:"优化链接图标显示逻辑"
+        content:"内核问题修复"
       }
     ]
   }

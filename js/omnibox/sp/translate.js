@@ -45,7 +45,7 @@ core.addNewSA({
                 next();
             })
             function next(){
-                _t_re=util.xhr('https://api.gumengya.com/Api/Translate?text='+encodeURIComponent(text)+'&from=auto&to=zh',function(res){
+                _t_re=util.xhr('https://api.gumengya.com/Api/Translate?appkey=b7a782741f667201b54880c925faec4b&text='+encodeURIComponent(text)+'&from=auto&to=zh',function(res){
                     var a=getsa();    
                     var o=JSON.parse(res);
                     if(o.code==200){

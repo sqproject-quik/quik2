@@ -3,6 +3,38 @@
     localStorage.quik2='{}';
   }
 
+
+  // 双向队列
+  function Queue(){
+    this.items={};
+    this.count=0;
+    this.head=0;
+    this.tail=0;
+  }
+  Queue.prototype.enqueue=function(item){
+    this.items[this.tail]=item;
+    this.tail=this.tail+1;
+    this.count=this.tail-this.head;
+  }
+  Queue.prototype.dequeue=function(){
+    if(this.count==0){
+      return null;
+    }
+    var item=this.items[this.head];
+    delete this.items[this.head];
+    this.head=this.head+1;
+    this.count--;
+    return item;
+  }
+  Queue.prototype.isEmpty=function(){
+    return this.count==0;
+  }
+  Queue.prototype.size=function(){
+    return this.count;
+  }
+
+
+
   var evn=getEventHandle();
 
   var idbsupport=localforage._getSupportedDrivers([localforage.INDEXEDDB])[0]==localforage.INDEXEDDB;
@@ -13,7 +45,10 @@
       alert('浏览器版本过低，不支持indexedDB，一些功能的使用将受限！');
     })
   }
-  var filerecv={
+
+  var setqueue=new Queue();
+
+  var filerecv2={
     get(hash,cb){
       localforage.getItem(hash).then(cb);
     },
@@ -27,7 +62,34 @@
       localforage.removeItem(hash).then(cb);
     }
   }
+  var filerecv={
+    get(hash,cb){
+      setqueue.enqueue(['get',[hash],cb]);
+      doqueue();
+    },
+    set(file,hash,cb){
+      setqueue.enqueue(['set',[file,hash],cb]);
+      doqueue();
+    },
+    delete(hash,cb){
+      setqueue.enqueue(['delete',[hash],cb]);
+      doqueue();
+    }
+  }
 
+  function doqueue(){
+    if(setqueue.isEmpty()){
+      return;
+    }
+    var dd=setqueue.dequeue();
+    console.log(dd);
+    var mm=dd[1];
+    mm.push(function(){
+      doqueue();
+      dd[2].apply(null,arguments);
+    })
+    filerecv2[dd[0]].apply(null,mm);
+  }
   var jl={};
 
   var f=function(ck,details){
