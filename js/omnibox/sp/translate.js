@@ -23,49 +23,43 @@ core.addNewSA({
       return new Promise(function(r,j){
         // 降低调用次数
         _t_timeout=setTimeout(()=>{
-            _t_re=util.xhr('https://api.oioweb.cn/api/txt/QQFanyi?sourceText='+encodeURIComponent(text),function(res){
-                var o=JSON.parse(res);
-                if(o.code==200){
-                    var a=getsa();
-                    var result=o.result.targetText;
-                    a.unshift({
-                        icon:util.getGoogleIcon('e8e2'),
-                        text:result,
-                        click(){
-                            ui.setValue(result);
-                        }
-                    })
-                    r(a);
-                }else{
-                    console.log('Translate API Err:',o);
-                    next();
-                }
-            },function(err){
-                console.log('Translate API Err:',err);
-                next();
-            })
-            function next(){
-                _t_re=util.xhr('https://api.gumengya.com/Api/Translate?appkey=b7a782741f667201b54880c925faec4b&text='+encodeURIComponent(text)+'&from=auto&to=zh',function(res){
-                    var a=getsa();    
-                    var o=JSON.parse(res);
-                    if(o.code==200){
-                        var result=o.data.result;
-                        a.unshift({
-                            icon:util.getGoogleIcon('e8e2'),
-                            text:result,
-                            click(){
-                                ui.setValue(result);
+            util.xhr('https://edge.microsoft.com/translate/auth',function(res){
+                var url='https://api.cognitive.microsofttranslator.com/translate?from=en&to=zh-CHS&api-version=3.0&includeSentenceLength=true';
+                var xhr=new XMLHttpRequest();
+                xhr.open('POST',url,true);
+                xhr.setRequestHeader('Content-Type','application/json');
+                xhr.setRequestHeader('authorization','Bearer '+res);
+                xhr.onreadystatechange=function(){
+                    if(xhr.readyState==4){
+                        if(xhr.status==200){
+                            var a=getsa();    
+                            var o=JSON.parse(xhr.responseText);
+                            if(o[0]){
+                            var result=o[0].translations[0].text;
+                                a.unshift({
+                                    icon:util.getGoogleIcon('e8e2'),
+                                    text:result,
+                                    click(){
+                                        ui.setValue(result);
+                                    }
+                                })
+                            }else{
+                                console.log('Translate API Err:',o);
                             }
-                        })
-                    }else{
-                        console.log('Translate API Err:',o);
+                            r(a);
+                        }else{
+                            console.log('Translate API Err:',o);
+                        }
                     }
-                    r(a);
-                    
-                },function(err){
-                    console.log('Translate API Err:',err);
-                })
-            }
+                }
+                var data=[{
+                    'Text':text.replace(/[\r\n]/g,' ')
+                }]
+                xhr.send(JSON.stringify(data));
+            },function(){
+                console.log('Translate API Err:auth failed');
+            })
+            
             
         },1500)
         
