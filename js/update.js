@@ -1,17 +1,17 @@
 (()=>{
   window.version_code = '${VERSION_CODE}';
   window.version={
-    version:'2.5.6.1',
+    version:'2.5.7',
     version_code:window.version_code,
-    updateTime:'2024/11/23',
+    updateTime:'2025/1/1',
     log:[
       {
         tag:"fix",
-        content:"修复翻译API接口"
+        content:"优化一些样式细节"
       },
       {
-        tag:"fix",
-        content:"内核问题修复"
+        tag:"thanks",
+        content:"感谢你对QUIK起始页的支持，祝你2025年快乐！"
       }
     ]
   }

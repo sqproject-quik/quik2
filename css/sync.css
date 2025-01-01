@@ -26,11 +26,16 @@
 .sync-dialog .exportslist .item .message .title,
 .sync-dialog .importslist .item .message .title{
   font-size: 16px;
+  padding-top: 4px;
 }
 .sync-dialog .exportslist .item .message .desc,
 .sync-dialog .importslist .item .message .desc{
   font-size: 12px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
   color: #888;
+  height: 24px;
 }
 .sync-dialog .importslist .item select{
   float: left;

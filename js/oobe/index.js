@@ -73,6 +73,13 @@
                         top:40,
                         right:40
                     }
+                },
+                {
+                    text:"主菜单中包含更多功能，有时也是插件的功能入口。",
+                    offset:{
+                        top:40,
+                        right:0
+                    }
                 }
             ],()=>{
                 initsto.set('guided',true);

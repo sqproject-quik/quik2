@@ -29,6 +29,8 @@
 .oobedia .part .lic-c{
     width: 100%;
     height: calc(100% - 40px);
+    padding: 20px;
+    box-sizing: border-box;
     overflow-y: auto;
 }
 .oobedia .part .btns{
@@ -55,14 +57,7 @@
     margin: 40px auto;
 }
 .oobedia .biaoyu{
-    text-align: center;
-    font-size: 24px;
-    letter-spacing: 10px;
-    line-height: 40px;
-    text-shadow: #aaa 0 1px 5px;
-}
-.oobedia .clist{
-    padding-top: 30px;
+    display: none;
 }
 .oobedia .clist .item{
     width: 200px;
@@ -84,6 +79,13 @@
 }
 .oobedia .clist .item:hover{
     box-shadow: 0 0 3px #aaa;
+}
+
+.oobedia .part.a2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .joinqqnot{
     font-size: 12px;

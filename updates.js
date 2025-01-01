@@ -1,4 +1,13 @@
 var updatelog={
+  "2.5.7":{
+    updates:[
+      {
+        tag:"fix",
+        content:"优化一些样式细节"
+      }
+    ],
+    time:"2025/1/1"
+  },
   "2.5.6.1":{
     updates:[
       {

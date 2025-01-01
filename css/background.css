@@ -214,8 +214,29 @@ body.dark .d-c.bg_d .scroll_con .unit-item .unit-title{
   width: calc(100% - 25px);
   height: 80px;
   padding:10px;
+  resize: none;
+  border: 0;
+  outline: 0;
   border-radius: 10px;
+  border: #ccc 1px solid;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
+.d-c.bg_d .textarea:focus{
+  border-color: #09f;
+}
+.d-c.bg_d p{
+  padding-top: 10px;
+  font-size: 15px;
+  padding-bottom: 5px;
+}
+.d-c.bg_d p a{
+  color: #09f;
+  text-decoration: none;
+}
+.d-c.bg_d br{
+  display: none;
+}
+
 .d-c.bg_d .gjzdysetbtn{
   min-width: 60px;
   line-height: 30px;
