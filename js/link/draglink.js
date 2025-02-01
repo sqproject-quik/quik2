@@ -4,7 +4,7 @@
         type:'boolean',
         index:2,
         title:"拖动排序链接(Beta)",
-        message:"开启后，你可以通过拖动链接来进行排序，手机端需长按链接1s才可拖动（Beta）",
+        message:"（仅在链接排列靠左时生效）开启后，你可以通过拖动链接来进行排序，手机端需长按链接1s才可拖动（Beta）",
         get(){
           return initsto.get('draglink');
         },
@@ -38,7 +38,7 @@
                         linkMenu.show();
                     },600);
                 }
-                if(!initsto.get('draglink'))return true;
+                if((!initsto.get('draglink'))||(initsto.get('linkpailie')=='b'))return true;
                 let startX =a? (e.pageX-li.getBoundingClientRect().left):(e.targetTouches[0].pageX-li.getBoundingClientRect().left);
                 let startY =a? (e.pageY-li.getBoundingClientRect().top):(e.targetTouches[0].pageY-li.getBoundingClientRect().top);
                 console.log(startX,startY);
