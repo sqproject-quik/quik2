@@ -25,6 +25,7 @@
       if(window.location.href.indexOf('://quik.42web.io/')!=-1){
         var ifr=util.element('iframe',{
           src:'./version',
+          style:"opacity:0"
         });
         document.body.appendChild(ifr);
         var i=0;
