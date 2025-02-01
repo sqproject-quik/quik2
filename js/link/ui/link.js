@@ -333,7 +333,7 @@
                     linklist.splice(cl.detail.index, 0, cl.detail);
                     var lis = util.query(linkF, '.link-list li', true);
                     var tli = lis[cl.index];
-                    util.query(linkF, '.link-list').insertBefore(tli, lis[cl.detail.index + 1]);
+                    util.query(linkF, '.link-list').insertBefore(tli, lis[cl.detail.index]); // fix a bug
                     util.query(tli, 'a').href = cl.detail.url;
                     util.query(tli, 'p').innerText = cl.detail.title;
                     util.getFavicon(cl.detail.url, favicon => {
