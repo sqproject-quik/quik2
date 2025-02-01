@@ -75,10 +75,24 @@
                     }
                 },
                 {
-                    text:"主菜单中包含更多功能，有时也是插件的功能入口。",
+                    text:"主菜单中包含常用功能，有时也是插件的功能入口。",
                     offset:{
                         top:40,
                         right:0
+                    }
+                },
+                {
+                    text:"单击鼠标右键或长按链接即可修改链接，点击“+”号可以添加新链接。",
+                    offset:{
+                        bottom:window.innerHeight/2-150,
+                        right:window.innerWidth/2-100
+                    }
+                },
+                {
+                    text:"开始使用QUIK起始页吧！",
+                    offset:{
+                        bottom:window.innerHeight/2-50,
+                        right:window.innerWidth/2-80
                     }
                 }
             ],()=>{

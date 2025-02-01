@@ -62,6 +62,7 @@
   _REQUIRE_('./js/update.js');
   _REQUIRE_('./js/oobe/index.js');
   _REQUIRE_('./js/rainbowegg/index.js');
+  _REQUIRE_('./js/hello/index.js');
 
 
   var _upaddon={};

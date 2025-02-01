@@ -1,4 +1,21 @@
 var updatelog={
+  "2.6.0":{
+    updates:[
+      {
+        tag:"fix",
+        content:"修复了一些程序内核中的问题"
+      },
+      {
+        tag:"fix",
+        content:"修复在quik.42web.io更新时的问题"
+      },
+      {
+        tag:"new",
+        content:"新增了QUIK问候功能，可在设置中设置"
+      }
+    ],
+    time:"2025/2/1"
+  },
   "2.5.7":{
     updates:[
       {

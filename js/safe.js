@@ -82,11 +82,18 @@
             confirm('确定要强制更新吗？',r=>{
                 if(r){
                     if(window.swReg){
-                        window.swReg.active.postMessage('update');
-                        new notice({
-                            title:"更新提示",
-                            content:"已向后台发送更新请求，请耐心等待。",
-                        }).show();
+                        if(window.isInframe&&location.href.indexOf('://quik.42web.io/')!=-1){
+                            alert('因安全原因，扩展程序无法进行强制更新，请在网页端更新',function(){
+                                window.open('https://quik.42web.io/?forceUpdate=1');
+                            });
+                        }else{
+                            window.swReg.active.postMessage('update');
+                            new notice({
+                                title:"更新提示",
+                                content:"已向后台发送更新请求，请耐心等待。",
+                            }).show();
+                        }
+                        
                     }else{
                         alert('更新完成',()=>{
                             location.reload();

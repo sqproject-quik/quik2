@@ -1,17 +1,21 @@
 (()=>{
   window.version_code = '${VERSION_CODE}';
   window.version={
-    version:'2.5.7',
+    version:'2.6.0',
     version_code:window.version_code,
-    updateTime:'2025/1/1',
+    updateTime:'2025/2/1',
     log:[
       {
         tag:"fix",
-        content:"优化一些样式细节"
+        content:"修复了一些程序内核中的问题"
       },
       {
-        tag:"thanks",
-        content:"感谢你对QUIK起始页的支持，祝你2025年快乐！"
+        tag:"fix",
+        content:"修复在quik.42web.io更新时的问题"
+      },
+      {
+        tag:"new",
+        content:"新增了QUIK问候功能，可在设置中设置"
       }
     ]
   }
@@ -42,8 +46,14 @@
       quik.util.xhr('./version', r=> {
         var nv = parseInt(r);
         if (nv > version_code) {
-          quik.toast.show('发现新版本(版本序号：'+nv+')，正在更新');
-          registration.active.postMessage('update');
+          if(window.isInframe&&location.href.indexOf('://quik.42web.io/')!=-1){
+            quik.alert('检测到新版本，安全原因无法在扩展中更新，即将打开新页面更新。',function(){
+              window.open('https://quik.42web.io/?update=1');
+            })
+          }else{
+            quik.toast.show('发现新版本(版本序号：'+nv+')，正在更新');
+            registration.active.postMessage('update');
+          }
         }
       }, ()=> {
         console.log('获取版本失败');

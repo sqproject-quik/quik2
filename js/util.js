@@ -11,6 +11,10 @@
     console.log('网页模式');
     window.isExt=false;
   }
+
+  if(window.parent!=window){
+    window.isInframe=true;
+  }
   var extRequests=[],idmax=0;
   window.addEventListener('message',function(e){
     if(e.data.type=='xhr_cb'){

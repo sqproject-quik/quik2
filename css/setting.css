@@ -64,6 +64,24 @@
 .setting-item .setting-item-right .setting-item-input{
   height: 40px;
 }
+.setting-item .setting-item-right input[type="text"],
+.setting-item .setting-item-right input[type="number"],
+.setting-item .setting-item-right input[type="password"]{
+  border:0;
+  outline: 0;
+  border-bottom: #e6e6e6 solid 1px;
+  background-color: transparent;
+  color: inherit;
+  padding: 2px;
+  transition: all .2s;
+  font-size: 16px;
+}
+.setting-item .setting-item-right input[type="text"]:focus,
+.setting-item .setting-item-right input[type="number"]:focus,
+.setting-item .setting-item-right input[type="password"]:focus{
+  border-bottom-color: #09f;
+}
+
 .setting-item .null-click .material-symbols-outlined{
   font-size: 16px;
   line-height: 40px;

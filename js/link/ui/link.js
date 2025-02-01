@@ -217,7 +217,7 @@
         initsto.set('linkstyle', 'round');
     }
     if (!initsto.get('linkpailie')) {
-        initsto.set('linkpailie', 'a');
+        initsto.set('linkpailie', 'b');
     }
 
     function drawLinks(cate){
