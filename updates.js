@@ -1,4 +1,13 @@
 var updatelog={
+  "2.6.1":{
+    updates:[
+      {
+        tag:"fix",
+        content:"修复了链接分组的BUG"
+      }
+    ],
+    time:"2025/2/2"
+  },
   "2.6.0":{
     updates:[
       {

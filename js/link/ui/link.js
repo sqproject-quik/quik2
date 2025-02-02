@@ -217,10 +217,11 @@
         initsto.set('linkstyle', 'round');
     }
     if (!initsto.get('linkpailie')) {
-        initsto.set('linkpailie', 'b');
+        initsto.set('linkpailie', 'a');
     }
 
     function drawLinks(cate){
+        console.log(cate);
         link.getLinks(cate, ls => {
             linklist = ls.data;
             ls.data.forEach(l => {
@@ -320,6 +321,7 @@
 
     link.on('change', cl => {
         var actcate = util.query(linkF, '.cate-bar-items .cate-item.active');
+        if(!actcate) return;
         if (cl.cate == actcate.innerText || (cl.cate == null && actcate.classList.contains('mr'))) {
             if (cl.type == 'add') {
                 var li = glinkli(cl.detail);

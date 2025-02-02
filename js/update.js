@@ -1,21 +1,13 @@
 (()=>{
   window.version_code = '${VERSION_CODE}';
   window.version={
-    version:'2.6.0',
+    version:'2.6.1',
     version_code:window.version_code,
-    updateTime:'2025/2/1',
+    updateTime:'2025/2/2',
     log:[
       {
         tag:"fix",
-        content:"修复了一些程序内核中的问题"
-      },
-      {
-        tag:"fix",
-        content:"修复在quik.42web.io更新时的问题"
-      },
-      {
-        tag:"new",
-        content:"新增了QUIK问候功能，可在设置中设置"
+        content:"修复了链接分组的BUG"
       }
     ]
   }

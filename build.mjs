@@ -80,6 +80,7 @@ fs.writeFileSync(path.join(__dirname,'docs/version'),v.toString());
 
 qjs(path.join(__dirname,'index.js'), function (code) {
   code=code.replace('\'${VERSION_CODE}\'',v);
+  fs.writeFileSync(path.join(__dirname,'index-b.js'),code);
   // fs.writeFileSync(path.join(__dirname,'docs/index.bundle.js'),code);
   uglifyJs.minify(code,{
     compress:{
@@ -99,6 +100,7 @@ cssmatch.forEach(function(item){
     css=css.replace(item,fs.readFileSync(path.join(__dirname,p)).toString())
   }
 })
+fs.writeFileSync(path.join(__dirname,'index-b.css'),css);
 fs.writeFileSync(path.join(__dirname,'docs/index.bundle.css'),new cleanCSS().minify(css).styles);
 
 let _h=fs.readFileSync(path.join(__dirname,'index.html')).toString().replace(/<!-- dev -->[\s\S]*<!-- dev end -->/g,'')
