@@ -1,4 +1,8 @@
-(()=>{
+const dialog = require("../../dialog");
+const { initsto } = require("../../omnibox/_core");
+const util = require("../../util");
+const { refsay, getNowSay } = require("../core");
+
   var def='海内存知己，天涯若比邻'; 
 
   if(!initsto.get('usersay')){
@@ -31,7 +35,7 @@
       util.query(d,'.says-input').value=initsto.get('usersay');
     })
   }
-  return {
+  module.exports= {
     key:"user",
     name:"用户自定义",
     callback(){
@@ -54,9 +58,8 @@
       icon:util.getGoogleIcon('e14d'),
       title:'复制',
       click(){
-        var value=nowSay.say;
+        var value=getNowSay().say;
         util.copyText(value);
       }
     }]
   }
-})()

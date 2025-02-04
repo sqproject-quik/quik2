@@ -1,4 +1,9 @@
-core.upinstallByOfficialMarket=(id)=>{
+const { alert, confirm } = require('../dialog/dialog_utils');
+const ui=require('./install_ui');
+const { xraddon } = require('./xrlist');
+
+function g(core){
+  core.upinstallByOfficialMarket=(id)=>{
     return new Promise((r,j)=>{
       if(core.getAddonByMarketId(id)){
         j({
@@ -164,3 +169,7 @@ core.upinstallByOfficialMarket=(id)=>{
       }
     })
   }
+  return core;
+}
+
+module.exports=g;

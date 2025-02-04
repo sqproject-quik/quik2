@@ -1,3 +1,9 @@
+const toast = require("../toast");
+const util = require("../util");
+const { addon_dialog_d } = require("./xrcore");
+const core = require('./_core');
+var def_addon_icon = window.isExt ? ("chrome-extension://" + window.extid + "/assets/def_addon.png") : "./assets/def_addon.png"
+
 var market_l = util.query(addon_dialog_d, '.content .p.ma ul');
 var isloaded=false;
 
@@ -14,7 +20,8 @@ function loadmarket(){
         for(var k in res){
             xrmarketItem(res[k],k);
         }
-    }).catch(()=>{
+    }).catch((e)=>{
+        console.log(e);
         market_l.innerHTML='<p>加载失败，点击<a href="javascript:;">重试</a></p>'
         util.query(market_l,'a').onclick=()=>{
             market_l.innerHTML='<div class="loading-p"><div class="g"></div></div>'
@@ -25,7 +32,7 @@ function loadmarket(){
 
 function xrmarketItem(addon,id){
     var li = util.element('li');
-    li.innerHTML = _REQUIRE_('./mb/market_item.mb.html').replace(/{deficon}/g,def_addon_icon);
+    li.innerHTML = require('./mb/market_item.mb.html').replace(/{deficon}/g,def_addon_icon);
     li.dataset.id = id;
     li.onclick = ()=> {
         market_l.querySelectorAll('li').forEach((li)=>{

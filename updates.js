@@ -1,4 +1,13 @@
 var updatelog={
+  "2.7.0":{
+    updates:[
+      {
+        tag: "change",
+        content: "采用新的代码框架（Beta）"
+      }
+    ],
+    time: "2025/2/4"
+  },
   "2.6.1":{
     updates:[
       {

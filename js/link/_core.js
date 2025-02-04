@@ -1,3 +1,6 @@
+var {storage,dbTool}=require('../storage');
+var getEventHandle=require('../event');
+
 var initsto = storage('link', {
   sync: true,
   title:"链接",
@@ -161,4 +164,16 @@ function limitURL(detail) {
     return 'title';
   }
   return false;
+}
+
+module.exports = {
+  initsto,
+  on,
+  off,
+  doevent,
+  pushLink,
+  writeLink,
+  limitURL,
+  compareLinks,
+  compareCates
 }
