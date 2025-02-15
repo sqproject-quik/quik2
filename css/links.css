@@ -427,3 +427,10 @@ body.dark .move-link-dialog .group-list .item:hover{
 body.dark .move-link-dialog .group-list .item.act{
   background-color: #444;
 }
+
+.link-add-icon{
+  width: 200px!important;
+}
+.link-add-icon-upload{
+  width: 50px;
+}

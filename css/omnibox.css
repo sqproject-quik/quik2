@@ -12,6 +12,9 @@
   height: 40px;
   backdrop-filter: blur(10px);
 }
+.searchbox.alignlink{
+  width: 800px;
+}
 body.t-dark .searchbox,
 body.t-dark .searchtypeselector,
 body.t-light .searchbox,

@@ -124,6 +124,9 @@ function pushLink(detail, ob) {
     title: detail.title,
     url: detail.url
   }
+  if(detail.icon){
+    link.icon=detail.icon;
+  }
   if (typeof detail.index == 'number' && detail.index >= 0) {
     if (detail.index > ob.length) {
       console.warn('添加链接时，index超出范围，应在0-' + ob.length + '之间');
@@ -144,6 +147,9 @@ function writeLink(index, detail, ob) {
   var link = {
     title: detail.title,
     url: detail.url
+  }
+  if(detail.icon){
+    link.icon=detail.icon;
   }
   ob[index] = link;
   if (typeof detail.index == 'number' && detail.index >= 0) {

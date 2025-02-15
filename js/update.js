@@ -5,13 +5,17 @@ const util = require("./util");
 
 window.version_code = '${VERSION_CODE}';
 window.version = {
-  version: '2.7.0',
+  version: '2.7.1',
   version_code: window.version_code,
-  updateTime: '2025/2/4',
+  updateTime: '2025/2/15',
   log: [
     {
-      tag: "change",
-      content: "采用新的代码框架（Beta）"
+      tag: "new",
+      content: "搜索框可以设置与链接部分对齐"
+    },
+    {
+      tag: "new",
+      content: "链接允许自定义图标（Beta）"
     }
   ]
 }

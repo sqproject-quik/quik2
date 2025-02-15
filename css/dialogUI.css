@@ -10,6 +10,11 @@
 .d-c .content p{
   line-height: 30px;
 }
+.d-c .content p.desc{
+  font-size: 12px;
+  color: #888;
+  line-height: 16px;
+}
 .d-c .content input[type=text],
 .d-c .content input[type=url],
 .d-c .content input[type=number],

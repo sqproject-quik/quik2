@@ -268,6 +268,10 @@ function initSearchBox() {
     })
   }
 
+  if(initsto.get('ob_alignlink')){
+    searchbox.classList.add('alignlink');
+  }
+
 }
 
 
@@ -384,6 +388,26 @@ var si3 = new SettingItem({
   }
 })
 sg.addNewItem(si3);
+
+var si4 = new SettingItem({
+  title: "对齐链接部分",
+  index: 8,
+  type: 'boolean',
+  message: "使搜索框长度对齐链接部分",
+  get() {
+    return initsto.get('ob_alignlink');
+  },
+  callback(value) {
+    initsto.set('ob_alignlink', value);
+    if(value){
+      searchbox.classList.add('alignlink');
+    }else{
+      searchbox.classList.remove('alignlink');
+    }
+    return true;
+  }
+})
+sg.addNewItem(si4);
 
 function gshowb() {
   if (initsto.get('ob_notshowb')) {

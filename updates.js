@@ -1,4 +1,17 @@
 var updatelog={
+  "2.7.1":{
+    updates:[
+      {
+        tag: "new",
+        content: "搜索框可以设置与链接部分对齐"
+      },
+      {
+        tag: "new",
+        content: "链接允许自定义图标（Beta）"
+      }
+    ],
+    time: "2025/2/15"
+  },
   "2.7.0":{
     updates:[
       {

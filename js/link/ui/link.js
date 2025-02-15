@@ -7,6 +7,7 @@ const { initsto } = require('../_core');
 const draglink=require('../draglink');
 const dialog = require('../../dialog');
 const toast = require('../../toast');
+const {showOpenFilePicker} = require('../../base');
 let resetmenued;
 setTimeout(function(){
     resetmenued=require('./z').resetmenued;
@@ -119,16 +120,22 @@ function glinkli(l) {
     var li = util.element('li');
     li.innerHTML = `<a href="${l.url}" target="_blank" rel="noopener noreferer"><div class="link-icon"><img/></div><p></p></a>`
     util.query(li, 'p').innerText = l.title;
-    util.getFavicon(l.url, favicon => {
-        if (favicon) {
-            util.query(li, 'img').src = favicon;
-        } else {
-            util.query(li, 'img').src = util.createIcon(l.title[0]);
-        }
-        util.query(li, 'img').onload = function () {
-            this.classList.add('load');
-        }
-    });
+    if(l.icon){
+        util.query(li, 'img').src=l.icon;
+        util.query(li, 'img').classList.add('load');
+    }else{
+        util.getFavicon(l.url, favicon => {
+            if (favicon) {
+                util.query(li, 'img').src = favicon;
+            } else {
+                util.query(li, 'img').src = util.createIcon(l.title[0]);
+            }
+            util.query(li, 'img').onload = function () {
+                this.classList.add('load');
+            }
+        });
+    }
+    
     li.oncontextmenu = function (e) {
         e.preventDefault()
         e.stopPropagation();
@@ -160,6 +167,23 @@ function openLinkEditDialog(index, cate) {
             e.preventDefault();
             linkaddDialog.close();
         }
+
+        util.query(d,'.link-add-icon-upload').onclick=function(e){
+            showOpenFilePicker().then(files=>{
+                // file to base64
+                var reader = new FileReader();
+                reader.readAsDataURL(files[0]);
+                reader.onload = function () {
+                    var base64 = reader.result;
+                    var icon=util.query(d, '.link-add-icon');
+                    icon.value=base64;
+                }
+                reader.onerror = function (error) {
+                    console.log('Error: ', error);
+                    toast.show('文件读取失败');
+                }
+            })
+        }
     }
     setTimeout(() => {
         linkaddDialog.open();
@@ -175,8 +199,10 @@ function openLinkEditDialog(index, cate) {
                 var title = util.query(d, '.link-add-title').value;
                 var index3 = util.query(d, '.link-add-index').value;
                 index3 = index3 == '' ? ll : (index3 - 0);
+                var icon=util.query(d, '.link-add-icon').value;
+
                 link.addLink({
-                    url, title, index: index3, cate
+                    url, title, index: index3, cate,icon
                 }, r => {
                     if (r.code != 0) {
                         toast.show(r.msg);
@@ -185,7 +211,8 @@ function openLinkEditDialog(index, cate) {
                         linkaddDialog.close();
                     }
                 })
-            });
+
+            },'');
         } else {
             var linklist=getLinklist();
             _n('修改链接', '修改', linklist[index].url, linklist[index].title, ll - 1, index, (e) => {
@@ -196,11 +223,13 @@ function openLinkEditDialog(index, cate) {
                 }
                 var title = util.query(d, '.link-add-title').value;
                 var index2 = util.query(d, '.link-add-index').value;
+                var icon=util.query(d, '.link-add-icon').value;
                 index2 = index2 == '' ? index : (index2 - 0);
                 link.changeLink(cate, index, {
                     url: url,
                     title: title,
-                    index: index2
+                    index: index2,
+                    icon:icon
                 }, (back) => {
                     if (back.code != 0) {
                         toast.show(back.msg);
@@ -209,16 +238,17 @@ function openLinkEditDialog(index, cate) {
                         linkaddDialog.close();
                     }
                 })
-            });
+            },linklist[index].icon);
         }
 
-        function _n(a, b, c, e, f, g, h) {
+        function _n(a, b, c, e, f, g, h,icon) {
             util.query(d, 'h1').innerHTML = a;
             util.query(d, '.ok.btn').innerHTML = b;
             util.query(d, 'input.link-add-url').value = c;
             util.query(d, 'input.link-add-title').value = e;
             util.query(d, 'input.link-add-index').setAttribute('max', f);
             util.query(d, 'input.link-add-index').value = g;
+            util.query(d, 'input.link-add-icon').value=icon||'';
             util.query(d, 'form').onsubmit = h;
         }
     })
@@ -359,13 +389,19 @@ link.on('change', cl => {
                 }
                 util.query(tli, 'a').href = cl.detail.url;
                 util.query(tli, 'p').innerText = cl.detail.title;
-                util.getFavicon(cl.detail.url, favicon => {
-                    if (favicon) {
-                        util.query(tli, 'img').src = favicon;
-                    } else {
-                        util.query(tli, 'img').src = util.createIcon(cl.detail.title[0]);
-                    }
-                });
+                if(cl.detail.icon){
+                    util.query(tli, 'img').src=cl.detail.icon;
+                    util.query(tli, 'img').classList.add('load');
+                }else{
+                    util.getFavicon(cl.detail.url, favicon => {
+                        if (favicon) {
+                            util.query(tli, 'img').src = favicon;
+                        } else {
+                            util.query(tli, 'img').src = util.createIcon(cl.detail.title[0]);
+                        }
+                    });
+                }
+                
             }
         } else if (cl.type == 'delete') {
             var li = util.query(linkF, '.link-list li', true)[cl.index];
