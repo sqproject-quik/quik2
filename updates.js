@@ -1,4 +1,17 @@
 var updatelog={
+  "2.7.2":{
+    updates:[
+      {
+        tag: "fix",
+        content: "修复手机端在开启搜索框对齐链接下的问题"
+      },
+      {
+        tag: "new",
+        content: "搜索框可以显示搜索历史"
+      }
+    ],
+    time: "2025/2/16"
+  },
   "2.7.1":{
     updates:[
       {

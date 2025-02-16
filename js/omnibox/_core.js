@@ -2,6 +2,7 @@ const { mainSetting, settingSto,SettingGroup,SettingItem } = require("../setting
 const getEventHandle = require("../event");
 const util = require("../util");
 var searchUtil = require("../search/util.js");
+const { storage } = require("../storage");
 let ui;
 setTimeout(function(){
   ui=require('./_ui');
@@ -70,6 +71,13 @@ var getSA = function (text, updateFn) {
 var enter = function (text) {
   doevent('beforeenter', [text])
   getType(text).enter(text);
+  var hissto=storage('omhis');
+  var o=hissto.get('his');
+  o.unshift(text);
+  if(o.length>15){
+    o.pop();
+  }
+  hissto.set('his',o);
   doevent('afterenter', [text])
 }
 
@@ -197,8 +205,10 @@ function initNative() {
   });
   var cal = require('./sp/cal.js');
   var tr = require('./sp/translate.js');
+  var hist=require('./sp/history');
   sis.push(cal);
   sis.push(tr);
+  sis.push(hist);
   init_state = true;
 }
 

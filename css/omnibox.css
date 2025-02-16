@@ -15,6 +15,11 @@
 .searchbox.alignlink{
   width: 800px;
 }
+@media(min-width:2000px){
+  .searchbox.alignlink{
+    width: 1200px;
+  }
+}
 body.t-dark .searchbox,
 body.t-dark .searchtypeselector,
 body.t-light .searchbox,
@@ -213,7 +218,7 @@ body.t-dark .searchtypeselector li.active{
 }
 @media (max-width:600px){
   .searchbox{
-    width: calc(100% - 20px);
+    width: calc(100% - 20px)!important;
     top:140px;
     transition: top .3s;
   }

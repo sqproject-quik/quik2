@@ -5,17 +5,17 @@ const util = require("./util");
 
 window.version_code = '${VERSION_CODE}';
 window.version = {
-  version: '2.7.1',
+  version: '2.7.2',
   version_code: window.version_code,
-  updateTime: '2025/2/15',
+  updateTime: '2025/2/16',
   log: [
     {
-      tag: "new",
-      content: "搜索框可以设置与链接部分对齐"
+      tag: "fix",
+      content: "修复手机端在开启搜索框对齐链接下的问题"
     },
     {
       tag: "new",
-      content: "链接允许自定义图标（Beta）"
+      content: "搜索框可以显示搜索历史"
     }
   ]
 }

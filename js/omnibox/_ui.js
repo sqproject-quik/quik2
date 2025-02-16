@@ -41,6 +41,7 @@ function initSearchBox() {
     chulitype(this.value.trim());
     saul.innerHTML = '';
     getSA(this.value.trim(), function (salist) {
+      console.log(salist);
       //记录用户原本的active
       var actli = util.query(saul, 'li.active')
       if (actli) {
@@ -76,6 +77,7 @@ function initSearchBox() {
   }
   input.oninput = util.fangdou(inputInputEv, 300);
   /* * */
+  inputInputEv.call(input);
 
   /* 集中处理keydown事件 */
   input.onkeydown = function (e) {
